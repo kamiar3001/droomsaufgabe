@@ -33,7 +33,7 @@
             <span class="repo-login">{{item.login}}</span>
           </td>
           <td>
-            <a href="#" (click)="getFollower(item)" class="follower-link">
+            <a (click)="getFollower(item)" class="follower-link">
               <span *ngIf="!item.followerCount">Load Followers</span>
               <span *ngIf="item.followerCount">
                 <pre *ngIf="!(item.followerCount | async)">loading followers...</pre>
@@ -42,7 +42,7 @@
             </a>
           </td>
           <td>
-            <a [href]="item.url" class="repo-link">Show more</a>
+            <a (click)="goDetail(item)" class="repo-link">Show more</a>
           </td>
         </tr>
       </tbody>

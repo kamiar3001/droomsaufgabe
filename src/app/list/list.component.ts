@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { IUser } from '../core/models/users.model';
 import { UsersService } from '../core/services/users.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 // We have to use this due to import `fuzzy-search` javascript functionality
 // there aren't any declaration file for `fuzzy-search`
@@ -16,7 +17,7 @@ declare const require: any;
 export class ListComponent implements OnInit {
   userData$: Observable<Array<IUser>>;
   userBackupData$: Observable<Array<IUser>>;
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService, private router: Router) {
     this.userBackupData$ = this.userData$ = this.userService.loadUsers();
   }
 
@@ -25,6 +26,10 @@ export class ListComponent implements OnInit {
 
   getFollower(item: IUser) {
     item.followerCount = this.userService.followers(item.followers_url);
+  }
+
+  goDetail(item: IUser) {
+    this.router.navigate(['/detail'], { queryParams: { id: item.login } });
   }
 
   search(loginName: string): void {
