@@ -26,14 +26,27 @@ export class ListComponent implements OnInit {
   search(loginName: string): void {
     this.userData$ = this.userBackupData$.pipe(
       map((users: Array<IUser>) => {
-        const FuzzySearch = require('fuzzy-search');
-        const searcher = new FuzzySearch(users, ['login'], {
-          caseSensitive: false,
-          space: true
-        });
-        const result = searcher.search(loginName.split(' ').join(''));
-        return result as Array<IUser>;
+        return this.fuzzySearch(loginName, users);
       })
     );
+  }
+
+  private fuzzySearch(loginName: string, users: Array<IUser>): Array<IUser> {
+    const FuzzySearch = require('fuzzy-search');
+    const searcher = new FuzzySearch(users, ['login'], {
+      caseSensitive: false,
+      space: true
+    });
+
+    const reverseKeyName: string = loginName.split(' ').reverse().join('');
+    const keyName: string = loginName.split(' ').join('');
+
+    const keyResult: Array<IUser> = searcher.search(keyName);
+    const reverseKeyResult: Array<IUser> = searcher.search(reverseKeyName);
+
+    const result: Array<IUser> = keyResult.concat(...reverseKeyResult);
+    result.filter((item, index) => result.indexOf(item) === index);
+    result.reduce((unique: Array<IUser>, item: IUser) => unique.includes(item) ? unique : [...unique, item], []);
+    return result;
   }
 }

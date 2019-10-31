@@ -62,7 +62,7 @@ describe('ListComponent', () => {
       // Act
       component.search(searchValue);
       component.userData$.subscribe((data: Array<IUser>) => {
-        returnData = data;
+        returnData = data.sort((x, y) => x.id.valueOf() - y.id.valueOf());
       });
       tick();
 
