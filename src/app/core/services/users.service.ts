@@ -3,14 +3,15 @@ import { Observable } from 'rxjs';
 import { IUser } from '../models/users.model';
 import { IUserDetail } from '../models/user-detail.model';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
   private readonly limit: number = 1000;
-  private readonly endpoint: string = 'https://developer.github.com/v3/users/';
-  private readonly detail_endpoint: string = 'https://developer.github.com/v3/users/{0}';
+  private readonly endpoint: string = 'https://api.github.com/users';
+  private readonly detail_endpoint: string = `${this.endpoint}/{0}`;
 
   constructor(private http: HttpClient) { }
 
@@ -26,5 +27,14 @@ export class UsersService {
   // in memory search should implement here
   searchUser(name: string): Observable<Array<IUser>> {
     throw new Error('not implement');
+  }
+
+  followers(follower_url: string): Observable<number> {
+    return this.http.get<number>(follower_url)
+    .pipe(
+      map((data: any) => {
+        return data.length;
+      })
+    );
   }
 }
