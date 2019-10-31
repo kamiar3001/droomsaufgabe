@@ -24,11 +24,6 @@ export class UsersService {
     return this.http.get<IUserDetail>(url);
   }
 
-  // in memory search should implement here
-  searchUser(name: string): Observable<Array<IUser>> {
-    throw new Error('not implement');
-  }
-
   followers(follower_url: string): Observable<number> {
     return this.http.get<number>(follower_url)
     .pipe(

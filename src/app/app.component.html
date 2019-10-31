@@ -1,4 +1,6 @@
 <div class="container">
+  <input #searchBox type="text" />
+  <button type="button" (click)="search(searchBox.value)">Search</button>
   <table>
     <thead>
       <tr>
