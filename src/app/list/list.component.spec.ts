@@ -48,8 +48,8 @@ describe('ListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe('ListComponent', () => {
-    fit('should return result', fakeAsync(() => {
+  describe('ListComponent', () => {
+    it('should return result', fakeAsync(() => {
       // Arrange
       const searchValue = 'na lo';
       const expectedValues: Array<IUser> = [

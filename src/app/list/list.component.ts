@@ -4,6 +4,10 @@ import { IUser } from '../core/models/users.model';
 import { UsersService } from '../core/services/users.service';
 import { map } from 'rxjs/operators';
 
+// We have to use this due to import `fuzzy-search` javascript functionality
+// there aren't any declaration file for `fuzzy-search`
+declare const require: any;
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
