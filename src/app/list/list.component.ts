@@ -28,9 +28,10 @@ export class ListComponent implements OnInit {
       map((users: Array<IUser>) => {
         const FuzzySearch = require('fuzzy-search');
         const searcher = new FuzzySearch(users, ['login'], {
-          caseSensitive: false
+          caseSensitive: false,
+          space: true
         });
-        const result = searcher.search(loginName);
+        const result = searcher.search(loginName.split(' ').join(''));
         return result as Array<IUser>;
       })
     );
