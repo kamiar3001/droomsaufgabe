@@ -1,0 +1,50 @@
+<div class="container">
+    <input #searchBox type="text" />
+    <button type="button" class="search-button" (click)="search(searchBox.value)">Search</button>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Id
+          </th>
+          <th>
+            Avatar
+          </th>
+          <th>
+            Login
+          </th>
+          <th>
+            Followers
+          </th>
+          <th>
+            Detail
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userData$ | async">
+          <td>
+            <span class="repo-id">{{item.id}}</span>
+          </td>
+          <td>
+            <img [src]="item.avatar_url" [title]="item.login" class="avatar" />
+          </td>
+          <td>
+            <span class="repo-login">{{item.login}}</span>
+          </td>
+          <td>
+            <a href="#" (click)="getFollower(item)" class="follower-link">
+              <span *ngIf="!item.followerCount">Load Followers</span>
+              <span *ngIf="item.followerCount">
+                <pre *ngIf="!(item.followerCount | async)">loading followers...</pre>
+                {{item.followerCount | async}}
+              </span>
+            </a>
+          </td>
+          <td>
+            <a [href]="item.url" class="repo-link">Show more</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
