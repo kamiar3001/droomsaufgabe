@@ -4,6 +4,7 @@ import { IUser } from '../core/models/users.model';
 import { UsersService } from '../core/services/users.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Grid } from '../core/models/user-grid.model';
 
 // We have to use this due to import `fuzzy-search` javascript functionality
 // there aren't any declaration file for `fuzzy-search`
@@ -17,19 +18,13 @@ declare const require: any;
 export class ListComponent implements OnInit {
   userData$: Observable<Array<IUser>>;
   userBackupData$: Observable<Array<IUser>>;
-  constructor(private userService: UsersService, private router: Router) {
+  gridOptions: any = new Grid();
+
+  constructor(private userService: UsersService) {
     this.userBackupData$ = this.userData$ = this.userService.loadUsers();
   }
 
   ngOnInit() {
-  }
-
-  getFollower(item: IUser) {
-    item.followerCount = this.userService.followers(item.followers_url);
-  }
-
-  goDetail(item: IUser) {
-    this.router.navigate(['/detail'], { queryParams: { id: item.login } });
   }
 
   search(loginName: string): void {

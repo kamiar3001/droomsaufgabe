@@ -1,0 +1,7 @@
+<a (click)="getFollower()" class="follower-link">
+  <span *ngIf="!params.followerCount">Load Followers</span>
+  <span *ngIf="params.followerCount">
+    <pre *ngIf="!(params.followerCount | async)">Loading...</pre>
+    {{params.followerCount | async}}
+  </span>
+</a>
