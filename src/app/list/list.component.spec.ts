@@ -1,12 +1,11 @@
-import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ListComponent } from './list.component';
 import { UsersService } from '../core/services/users.service';
 import { of } from 'rxjs';
 import { IUser } from '../core/models/users.model';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { By } from '@angular/platform-browser';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -18,6 +17,7 @@ describe('ListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ListComponent],
       imports: [
+        RouterTestingModule,
         HttpClientTestingModule
       ],
       providers: [
