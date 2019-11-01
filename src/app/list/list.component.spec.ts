@@ -6,6 +6,10 @@ import { UsersService } from '../core/services/users.service';
 import { of } from 'rxjs';
 import { IUser } from '../core/models/users.model';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AgGridModule } from 'ag-grid-angular';
+import { AvatarComponent } from '../avatar/avatar.component';
+import { FollowersComponent } from '../followers/followers.component';
+import { DetailGridCellComponent } from '../detail-grid-cell/detail-grid-cell.component';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -15,10 +19,20 @@ describe('ListComponent', () => {
   beforeEach(async(() => {
     userServiceSpy = jasmine.createSpyObj('UsersService', ['loadUsers']);
     TestBed.configureTestingModule({
-      declarations: [ListComponent],
+      declarations: [
+        AvatarComponent,
+        FollowersComponent,
+        DetailGridCellComponent,
+        ListComponent
+      ],
       imports: [
+        HttpClientTestingModule,
         RouterTestingModule,
-        HttpClientTestingModule
+        AgGridModule.withComponents([
+          AvatarComponent,
+          FollowersComponent,
+          DetailGridCellComponent
+        ])
       ],
       providers: [
         { provide: UsersService, useValue: userServiceSpy }

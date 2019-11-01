@@ -1,1 +1,3 @@
-<img [src]="params.value" class="avatar" />
+<ng-container *ngIf="params">
+    <img [src]="params.value" class="avatar" />
+</ng-container>

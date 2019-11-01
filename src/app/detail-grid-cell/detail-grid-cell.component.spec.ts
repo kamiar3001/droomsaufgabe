@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailGridCellComponent } from './detail-grid-cell.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DetailGridCellComponent', () => {
   let component: DetailGridCellComponent;
@@ -8,9 +9,12 @@ describe('DetailGridCellComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailGridCellComponent ]
+      imports: [
+        RouterTestingModule,
+      ],
+      declarations: [DetailGridCellComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

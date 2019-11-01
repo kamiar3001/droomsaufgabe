@@ -48,9 +48,9 @@ export class ListComponent implements OnInit {
     const keyResult: Array<IUser> = searcher.search(keyName);
     const reverseKeyResult: Array<IUser> = searcher.search(reverseKeyName);
 
-    const result: Array<IUser> = keyResult.concat(...reverseKeyResult);
-    result.filter((item, index) => result.indexOf(item) === index);
-    result.reduce((unique: Array<IUser>, item: IUser) => unique.includes(item) ? unique : [...unique, item], []);
+    let result: Array<IUser> = keyResult.concat(...reverseKeyResult);
+    result = result.filter((item, index) => result.indexOf(item) === index);
+    result = result.reduce((unique: Array<IUser>, item: IUser) => unique.includes(item) ? unique : [...unique, item], []);
     return result;
   }
 }
