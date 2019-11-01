@@ -1,4 +1,4 @@
-<ng-container *ngIf="routeLoad$ | async">
+<div *ngIf="routeLoad$ | async" class="px-5">
   <ng-container *ngIf="userDetails$ | async; let detail">
     <app-list-detail-item [item]="detail.id" [caption]="'Id'"></app-list-detail-item>
     <hr />
@@ -60,4 +60,4 @@
     <hr />
     <app-list-detail-item [item]="detail.updated_at" [caption]="'updated_at'"></app-list-detail-item>
   </ng-container>
-</ng-container>
+</div>
