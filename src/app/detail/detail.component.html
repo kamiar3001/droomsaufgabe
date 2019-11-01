@@ -1,3 +1,63 @@
-<p>
-  detail works!
-</p>
+<ng-container *ngIf="routeLoad$ | async">
+  <ng-container *ngIf="userDetails$ | async; let detail">
+    <app-list-detail-item [item]="detail.id" [caption]="'Id'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.login" [caption]="'Login name'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.node_id" [caption]="'node_id'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.avatar_url" [caption]="'avatar_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.gravatar_id" [caption]="'gravatar_id'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.url" [caption]="'url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.html_url" [caption]="'html_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.followers_url" [caption]="'followers_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.gists_url" [caption]="'gists_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.starred_url" [caption]="'starred_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.starred_url" [caption]="'starred_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.subscriptions_url" [caption]="'subscriptions_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.organizations_url" [caption]="'organizations_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.repos_url" [caption]="'repos_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.events_url" [caption]="'events_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.received_events_url" [caption]="'received_events_url'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.type" [caption]="'type'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.name" [caption]="'name'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.company" [caption]="'company'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.blog" [caption]="'blog'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.location" [caption]="'location'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.email" [caption]="'email'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.hireable" [caption]="'hireable'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.bio" [caption]="'bio'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.public_repos" [caption]="'public_repos'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.public_gists" [caption]="'public_gists'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.followers" [caption]="'followers'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.following" [caption]="'following'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.created_at" [caption]="'created_at'"></app-list-detail-item>
+    <hr />
+    <app-list-detail-item [item]="detail.updated_at" [caption]="'updated_at'"></app-list-detail-item>
+  </ng-container>
+</ng-container>
