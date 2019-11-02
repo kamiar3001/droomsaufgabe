@@ -11,4 +11,6 @@ export class Grid {
         { headerName: 'Detail', field: 'url', cellRendererFramework: DetailGridCellComponent }
     ];
     rowHeight = 50;
+    paginationPageSize = 135;
+    pagination = true;
 }

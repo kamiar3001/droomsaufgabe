@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { IUser } from '../core/models/users.model';
 import { UsersService } from '../core/services/users.service';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { Grid } from '../core/models/user-grid.model';
 
 // We have to use this due to import `fuzzy-search` javascript functionality
@@ -21,7 +20,8 @@ export class ListComponent implements OnInit {
   gridOptions: any = new Grid();
 
   constructor(private userService: UsersService) {
-    this.userBackupData$ = this.userData$ = this.userService.loadUsers();
+    this.userBackupData$ = this.userData$ =
+      this.userService.cachefirstOneThousandUsers();
   }
 
   ngOnInit() {

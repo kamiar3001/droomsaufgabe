@@ -17,7 +17,7 @@ describe('ListComponent', () => {
   let userServiceSpy: jasmine.SpyObj<UsersService> = null;
 
   beforeEach(async(() => {
-    userServiceSpy = jasmine.createSpyObj('UsersService', ['loadUsers']);
+    userServiceSpy = jasmine.createSpyObj('UsersService', ['cachefirstOneThousandUsers']);
     TestBed.configureTestingModule({
       declarations: [
         AvatarComponent,
@@ -52,7 +52,7 @@ describe('ListComponent', () => {
       { login: 'John' },
       { login: 'na.lo@gmail.com', id: 3 }
     ];
-    userServiceSpy.loadUsers.and.returnValue(of(defaultValues));
+    userServiceSpy.cachefirstOneThousandUsers.and.returnValue(of(defaultValues));
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

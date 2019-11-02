@@ -3,6 +3,7 @@
   <button type="button" class="search-button" (click)="search(searchBox.value)">Search</button>
   <hr />
   <ag-grid-angular style="width: 100%; height: calc(100% - 25px);" class="ag-theme-balham" [rowData]="userData$ | async"
-    [columnDefs]="gridOptions.columnDefs" [rowHeight]="gridOptions.rowHeight">
+    [columnDefs]="gridOptions.columnDefs" [rowHeight]="gridOptions.rowHeight"
+    [paginationPageSize]="gridOptions.paginationPageSize" [pagination]="gridOptions.pagination">
   </ag-grid-angular>
 </div>
